@@ -1,0 +1,12 @@
+.coverage
+*.pyc
+*.swp
+*.pyo
+.tox
+.cache
+.idea
+.eggs
+*.egg-info
+AUTHORS
+ChangeLog
+requirements.txt.bak
