@@ -26,7 +26,7 @@ def generate_revision_graph(revisions, format):
         if revision.down_revision is None:
             dot.edge('base', revision.revision)
             continue
-        if isinstance(revision.down_revision, basestring):
+        if isinstance(revision.down_revision, str):
             dot.edge(revision.down_revision, revision.revision)
             continue
         for down_revision in revision.down_revision:
