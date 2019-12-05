@@ -4,8 +4,8 @@ from alembic.config import Config
 from alembic.util import CommandError
 import click
 
-from utils import get_revisions
-from utils import generate_revision_graph
+from .utils import get_revisions
+from .utils import generate_revision_graph
 
 VALID_OUTPUT_FORMATS = ['png', 'svg', 'pdf']
 
