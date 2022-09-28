@@ -15,13 +15,15 @@ VALID_OUTPUT_FORMATS = ['png', 'svg', 'pdf']
 @click.option('--filename', default='migrations', help='output file name without file extension')
 @click.option('--format', default='png', help='output file format',
               type=click.Choice(VALID_OUTPUT_FORMATS))
-def cli(config, name, filename, format):
+@click.option('--enable-desc', default='no', help='enable description of commits',
+              type=click.Choice(['yes', 'no']))
+def cli(config, name, filename, format, enable_desc):
     alembic_config = Config(file_=config, ini_section=name)
     try:
         revisions = get_revisions(alembic_config)
     except CommandError as e:
         sys.exit(e)
-    dot = generate_revision_graph(revisions, format)
+    dot = generate_revision_graph(revisions, format, enable_desc)
     dot.render(filename=filename)
 
 

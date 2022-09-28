@@ -19,10 +19,13 @@ def get_revisions(config, rev_range=None):
     )
 
 
-def generate_revision_graph(revisions, format):
+def generate_revision_graph(revisions, format, enable_desc):
     dot = Digraph(format='png')
     for revision in revisions:
-        dot.node(revision.revision)
+        if enable_desc == "yes":
+            dot.node(revision.revision, revision.doc)
+        else:
+            dot.node(revision.revision)
         if revision.down_revision is None:
             dot.edge('base', revision.revision)
             continue
