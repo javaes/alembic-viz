@@ -23,7 +23,7 @@ def generate_revision_graph(revisions, format, enable_desc):
     dot = Digraph(format='png')
     for revision in revisions:
         if enable_desc == "yes":
-            dot.node(revision.revision, revision.doc)
+            dot.node(revision.revision, "<<B>" + revision.revision + "</B><br />" + revision.doc + ">")
         else:
             dot.node(revision.revision)
         if revision.down_revision is None:
